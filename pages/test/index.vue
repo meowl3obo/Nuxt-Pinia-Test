@@ -1,8 +1,11 @@
 <template>
   <div>now count: {{ data }}</div>
+  <div>map test: {{ test.get('a') }}</div>
   <button @click="setCount(data+1)">SetCount</button>
   <button @click="getData(data)">TestGetData</button>
   <button @click="postData(data)">TestPostData</button>
+  <button @click="test.set('a','c')">ChangeTest</button>
+  <button @click="test.clear()">ClearTest</button>
   <NuxtLink to="/">前往 main</NuxtLink>
 </template>
 
@@ -16,6 +19,9 @@ export default defineComponent({
     })
     const { SetCount, GetCount } = DataStore()
     const data = computed(() => GetCount())
+    const test = reactive(new Map<string, string>())
+
+    test.set('a', 'b')
 
     const setCount = (newVal: number) => {
       SetCount(newVal);
@@ -35,7 +41,11 @@ export default defineComponent({
       console.log(response.data.value)
     }
 
-    return { data, setCount, getData, postData }
+    watch(test, () => {
+      console.log(test)
+    }, { deep: true })
+
+    return { data, test, setCount, getData, postData }
   },
 })
 </script>
