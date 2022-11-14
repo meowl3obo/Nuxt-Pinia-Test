@@ -11,6 +11,9 @@ import { DataStore } from '@/store/data'
 
 export default defineComponent({
   setup() {
+    definePageMeta({
+      middleware: ['test']
+    })
     const { SetCount, GetCount } = DataStore()
     const data = computed(() => GetCount())
 
