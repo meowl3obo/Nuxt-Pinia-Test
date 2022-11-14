@@ -1,6 +1,6 @@
 <template>
-  <div>now count: {{ GetCount() }}</div>
-  <button @click="SetCount(GetCount()+1)">SetCount</button>
+  <div>now count: {{ data }}</div>
+  <button @click="setCount(data+1)">SetCount</button>
   <NuxtLink to="/">前往 main</NuxtLink>
 </template>
 
@@ -11,8 +11,13 @@ import { DataStore } from '@/store/data'
 export default defineComponent({
   setup() {
     const { SetCount, GetCount } = DataStore()
+    const data = computed(() => GetCount())
 
-    return { SetCount, GetCount }
+    const setCount = (newVal: number) => {
+      SetCount(newVal);
+    }
+
+    return { data, setCount }
   },
 })
 </script>
