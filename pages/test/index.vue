@@ -26,10 +26,11 @@ export default defineComponent({
     definePageMeta({
       middleware: ["test"],
     });
+    type TStringMap<T> = Map<string, T>
     const { SetCount, GetCount } = DataStore();
     const data = computed(() => GetCount());
-    const test = reactive(new Map<string, string>());
-    const tt = reactive(new Map<string, Map<string, string>>());
+    const test = reactive<TStringMap<string>>(new Map());
+    const tt = reactive<TStringMap<TStringMap<string>>>(new Map<string, Map<string, string>>());
     const res = ref<any>();
 
     test.set("a", "b");
