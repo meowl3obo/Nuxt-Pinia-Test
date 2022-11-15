@@ -10,7 +10,7 @@
     <button @click="test.clear()">ClearTest</button>
   </div>
   <div>
-    <div>res: {{ res }}</div>
+    <div>res: <span>{{ res }}</span></div>
     <button @click="getData(data)">TestGetData</button>
     <button @click="postData(data)">TestPostData</button>
   </div>
@@ -61,6 +61,8 @@ export default defineComponent({
       });
       res.value = response.data.value
     };
+
+    getData()
 
     watch(
       test,
