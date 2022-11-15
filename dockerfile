@@ -7,5 +7,5 @@ COPY . .
 RUN npm ci && npm cache clean --force
 RUN npm run build
 
-COPY ./.output /app/.output
+COPY .output /app/.output
 ENTRYPOINT ["npm", "run", "start"]
