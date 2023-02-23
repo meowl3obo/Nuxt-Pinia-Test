@@ -5,14 +5,14 @@
   </div>
   <div>
     <div>map test: {{ test.get("a") }}</div>
-    <div>deep map: {{ tt.get("a").get("a") }}</div>
+    <div>deep map: {{ tt.get("a")?.get("a") }}</div>
     <button @click="test.set('a', 'c')">ChangeTest</button>
     <button @click="test.clear()">ClearTest</button>
   </div>
   <div>
     <div>res: <span>{{ res }}</span></div>
-    <button @click="getData(data)">TestGetData</button>
-    <button @click="postData(data)">TestPostData</button>
+    <button @click="getData()">TestGetData</button>
+    <button @click="postData()">TestPostData</button>
   </div>
 
   <NuxtLink to="/">前往 main</NuxtLink>
